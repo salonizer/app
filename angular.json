@@ -59,7 +59,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Salonizer:build"
+            "browserTarget": "Salonizer:build",
+            "host": "0.0.0.0"
           },
           "configurations": {
             "production": {
