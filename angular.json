@@ -23,6 +23,7 @@
               "src/assets"
             ],
             "styles": [
+              "src/assets/css/photon.css",
               "src/styles.css"
             ],
             "scripts": [],
