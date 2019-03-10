@@ -3,5 +3,6 @@ export class ServiceClass {
                 public name?: string,
                 public time?: string,
                 public cost?: string,
+                public id?: string,
         ) {}
 }
