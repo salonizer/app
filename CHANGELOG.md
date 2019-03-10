@@ -1,5 +1,6 @@
 # CHANGELOG
 ## v0.1 - alfa
+- v0.0.3-9-g322303b - after git clean
 - v0.0.3-8-gf054cf6 - add, edit and delete customers working
 - v0.0.3-6-gcc51278 - add refresh to esc keypress
 - v0.0.3-4-g66cf289 - add, edit, delete in services working ok
