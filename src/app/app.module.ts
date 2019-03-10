@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +11,8 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { SettingsComponent } from './settings/settings.component';
 import { CustomersComponent } from './customers/customers.component';
 import { StatsComponent } from './stats/stats.component';
+import { AddFormComponent } from './customers/add-form/add-form.component';
+import { ServiceAddFormComponent } from './services/service-add-form/service-add-form.component';
 
 @NgModule({
   declarations: [
@@ -21,10 +24,13 @@ import { StatsComponent } from './stats/stats.component';
     SettingsComponent,
     CustomersComponent,
     StatsComponent,
+    AddFormComponent,
+    ServiceAddFormComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -7,7 +7,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { StatsComponent } from './stats/stats.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full'},
+  { path: '', redirectTo: '/calendar', pathMatch: 'full'},
   { path: 'calendar', component: CalendarComponent},
   { path: 'customers', component: CustomersComponent},
   { path: 'services', component: ServicesComponent},

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PdbInit } from '@ngx-dnd/pdb-wrapper';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
 title="aplikacja";
+
+constructor(
+  private pdbinit: PdbInit
+) {
+  this.pdbinit.set_basename('testbazy');
+}
+
   ngOnInit() {
 
 

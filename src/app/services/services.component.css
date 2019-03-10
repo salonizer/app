@@ -43,3 +43,22 @@
         padding-right: 50px;
         padding-bottom: 20px;
 }
+
+
+.background {
+	width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+	background-color: yellow;
+}
+
+/* 
+http://jsfiddle.net/6KaMy/1/
+is there a better way than the absolute positioning and negative margin.
+It has the problem that the content will  will be cut on top if the window is smalller than the content.
+*/
+
+tr:hover {
+        background-color: rgb(221,221,221);
+      }

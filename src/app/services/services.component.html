@@ -1,4 +1,5 @@
 <div class="window">
+		<app-service-add-form (eventTask)=refresh()></app-service-add-form>
 
   <div class="header">
     <h1>Usługi</h1>
@@ -8,181 +9,18 @@
       <table class="table-striped">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Kind</th>
-              <th>File Size</th>
+              <th>Nazwa</th>
+              <th>Czas</th>
+              <th>Cena</th>
+              <th>Akcje</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>photon.css</td>
-              <td>CSS</td>
-              <td>28K</td>
-            </tr>
-            <tr>
-              <td>photon.css</td>
-              <td>CSS</td>
-              <td>28K</td>
-            </tr>
-            <tr>
-              <td>photon.css</td>
-              <td>CSS</td>
-              <td>28K</td>
-            </tr>
-            <tr>
-                <td>photon.css</td>
-                <td>CSS</td>
-                <td>28K</td>
-              </tr>
-              <tr>
-                <td>photon.css</td>
-                <td>CSS</td>
-                <td>28K</td>
-              </tr>
-              <tr>
-                <td>photon.css</td>
-                <td>CSS</td>
-                <td>28K</td>
-              </tr>
-              <tr>
-                  <td>photon.css</td>
-                  <td>CSS</td>
-                  <td>28K</td>
-                </tr>
-                <tr>
-                  <td>photon.css</td>
-                  <td>CSS</td>
-                  <td>28K</td>
-                </tr>
-                <tr>
-                  <td>photon.css</td>
-                  <td>CSS</td>
-                  <td>28K</td>
-                </tr>
-                <tr>
-                    <td>photon.css</td>
-                    <td>CSS</td>
-                    <td>28K</td>
-                  </tr>
-                  <tr>
-                    <td>photon.css</td>
-                    <td>CSS</td>
-                    <td>28K</td>
-                  </tr>
-                  <tr>
-                    <td>photon.css</td>
-                    <td>CSS</td>
-                    <td>28K</td>
-                  </tr>
-                  <tr>
-                      <td>photon.css</td>
-                      <td>CSS</td>
-                      <td>28K</td>
-                    </tr>
-                    <tr>
-                      <td>photon.css</td>
-                      <td>CSS</td>
-                      <td>28K</td>
-                    </tr>
-                    <tr>
-                      <td>photon.css</td>
-                      <td>CSS</td>
-                      <td>28K</td>
-                    </tr>
-                    <tr>
-                        <td>photon.css</td>
-                        <td>CSS</td>
-                        <td>28K</td>
-                      </tr>
-                      <tr>
-                        <td>photon.css</td>
-                        <td>CSS</td>
-                        <td>28K</td>
-                      </tr>
-                      <tr>
-                        <td>photon.css</td>
-                        <td>CSS</td>
-                        <td>28K</td>
-                      </tr>
-                      <tr>
-                          <td>photon.css</td>
-                          <td>CSS</td>
-                          <td>28K</td>
-                        </tr>
-                        <tr>
-                          <td>photon.css</td>
-                          <td>CSS</td>
-                          <td>28K</td>
-                        </tr>
-                        <tr>
-                          <td>photon.css</td>
-                          <td>CSS</td>
-                          <td>28K</td>
-                        </tr>
-                        <tr>
-                            <td>photon.css</td>
-                            <td>CSS</td>
-                            <td>28K</td>
-                          </tr>
-                          <tr>
-                            <td>photon.css</td>
-                            <td>CSS</td>
-                            <td>28K</td>
-                          </tr>
-                          <tr>
-                            <td>photon.css</td>
-                            <td>CSS</td>
-                            <td>28K</td>
-                          </tr>
-                          <tr>
-                              <td>photon.css</td>
-                              <td>CSS</td>
-                              <td>28K</td>
-                            </tr>
-                            <tr>
-                              <td>photon.css</td>
-                              <td>CSS</td>
-                              <td>28K</td>
-                            </tr>
-                            <tr>
-                              <td>photon.css</td>
-                              <td>CSS</td>
-                              <td>28K</td>
-                            </tr>
-                            <tr>
-                                <td>photon.css</td>
-                                <td>CSS</td>
-                                <td>28K</td>
-                              </tr>
-                              <tr>
-                                <td>photon.css</td>
-                                <td>CSS</td>
-                                <td>28K</td>
-                              </tr>
-                              <tr>
-                                <td>photon.css</td>
-                                <td>CSS</td>
-                                <td>28K</td>
-                              </tr>
-                              <tr>
-                                  <td>photon.css</td>
-                                  <td>CSS</td>
-                                  <td>28K</td>
-                                </tr>
-                                <tr>
-                                  <td>photon.css</td>
-                                  <td>CSS</td>
-                                  <td>28K</td>
-                                </tr>
-                                <tr>
-                                  <td>photon.css</td>
-                                  <td>CSS</td>
-                                  <td>28K</td>
-                                </tr>
-            <tr>
-              <td>photon.css</td>
-              <td>CSS</td>
-              <td>28K</td>
+            <tr *ngFor="let item of fresult">
+              <td>{{ item.name }}</td>
+              <td>{{ item.time }}</td>
+              <td>{{ item.price }}</td>
+              <td>[edit] [delete]</td>
             </tr>
           </tbody>
         </table>
@@ -190,9 +28,7 @@
 
   <div class="footer">
     <div class="buttons">
-        <button class="btn btn-large btn-default margin-2px">Usuń</button>
-        <button class="btn btn-large btn-default margin-2px">Edytuj</button>
-        <button class="btn btn-large btn-default margin-2px">Wybierz</button>
+        <button class="btn btn-large btn-default margin-2px" (click)="openModal()">Nowa usługa</button>
     </div>
   </div>
 </div>
