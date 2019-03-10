@@ -1,8 +1,0 @@
-
-port='4201'
-envNo='1'
-dockerImage='runserve/angular:latest'
-gitUser='mirek001'
-gitEmail='mirek.grzegorczyk@gmail.com'
-gitAddress='https://github.com/ngx-dnd/pdb-wrapper.git'
-containerName='runserve-dev-env'

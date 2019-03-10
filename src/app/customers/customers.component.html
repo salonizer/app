@@ -1,3 +1,66 @@
-<p>
-  customers works!
-</p>
+<div class="window">
+    <!-- ADD SERVICE MODAL -->
+    <div id="addCustomerModal" class="customer-add-modal-window" >
+      <form customerForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label>Imie</label>
+          <input type="text" class="form-control" name="firstName" [(ngModel)]="customerForm.firstName">
+        </div>
+        <div class="form-group">
+          <label>Nazwisko</label>
+          <input type="text" class="form-control" name="lastName" [(ngModel)]="customerForm.lastName">
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="text" class="form-control" name="email" [(ngModel)]="customerForm.email">
+        </div>
+        <div class="form-group">
+            <label>Telefon</label>
+            <input type="text" class="form-control" name="phone" [(ngModel)]="customerForm.phone">
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn btn-form btn-default" (click)="onCencel()">Cancel</button>
+          <button type="submit" class="btn btn-form btn-primary">OK</button>
+        </div>
+      </form>
+    </div>
+    <!-- /ADD SERVICE MODAL -->
+    
+  <!-- MAIN WINDOW -->
+    <div class="header">
+      <h1>Klienci</h1>
+    </div>
+  
+    <div class="content">
+        <table class="table-striped">
+            <thead>
+              <tr>
+                <th>Imie i nazwisko</th>
+                <th>Email</th>
+                <th>Telefon</th>
+                <th>Akcje</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of fresult">
+                <td (click)="onEdit(item)">{{ item.firstName }} {{ item.lastName }}</td>
+                <td (click)="onEdit(item)">{{ item.email }}</td>
+                <td (click)="onEdit(item)">{{ item.phone }}</td>
+                <td><span class="icon icon-cancel" (click)="onDelete(item)"></span></td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+  
+    <div class="footer">
+      <div class="buttons">
+          <button class="btn btn-large btn-default margin-2px" (click)="onNewCustomer()">Nowy klient</button>
+      </div>
+    </div>
+  <!-- /MAIN  WINDOW -->
+  
+  <!-- {{ fresult | json }} -->
+  
+  
+  </div>
+  

@@ -11,8 +11,6 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { SettingsComponent } from './settings/settings.component';
 import { CustomersComponent } from './customers/customers.component';
 import { StatsComponent } from './stats/stats.component';
-import { AddFormComponent } from './customers/add-form/add-form.component';
-import { ServiceAddFormComponent } from './services/service-add-form/service-add-form.component';
 
 @NgModule({
   declarations: [
@@ -24,8 +22,6 @@ import { ServiceAddFormComponent } from './services/service-add-form/service-add
     SettingsComponent,
     CustomersComponent,
     StatsComponent,
-    AddFormComponent,
-    ServiceAddFormComponent,
   ],
   imports: [
     BrowserModule,
