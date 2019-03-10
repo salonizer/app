@@ -20,6 +20,7 @@ serviceForm = new ServiceClass();
 @HostListener('document:keydown.escape', ['$event']) onKeydownHandler(event: KeyboardEvent) {
   // console.log(event);
   this.closeModal();
+  this.refresh();
 }
 
 
