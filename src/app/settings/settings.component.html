@@ -1,3 +1,99 @@
-<p>
-  settings works!
-</p>
+<div class="window">
+
+  <!-- MAIN WINDOW -->
+  <div class="header">
+    <h1>Ustawienia</h1>
+  </div>
+
+  <div class="content">
+    <!-- COMPANY DATA -->
+    <div class="column settings-address">
+      <h3>Dane firmy:</h3>
+      <form companyDataForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label>Nazwa firmy</label>
+          <input type="text" class="form-control" name="name" [(ngModel)]="serviceForm.name">
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-form btn-primary">ZAPISZ</button>
+        </div>
+      </form>
+    </div>
+    <!-- /COMPANY DATA -->
+    <hr>
+    <!-- OPEN HOURS -->
+    <div class="cloumn settings-open-hours">
+      <h3>Godziny otwarcia:</h3>
+      <form>
+        <table>
+          <tr>
+            <td>poniedziałek</td>
+            <td><input type="checkbox" checked> Otwarte</td>
+            <td>od: <input type="time" required> do: <input type="time" required></td>
+          </tr>
+          <tr>
+            <td>wtorek</td>
+            <td><input type="checkbox" checked> Otwarte</td>
+            <td>od: <input type="time" required> do: <input type="time" required></td>
+          </tr>
+          <tr>
+            <td>środa</td>
+            <td><input type="checkbox" checked> Otwarte</td>
+            <td>od: <input type="time" required> do: <input type="time" required></td>
+          </tr>
+          <tr>
+            <td>czwartek</td>
+            <td><input type="checkbox" checked> Otwarte</td>
+            <td>od: <input type="time" required> do: <input type="time" required></td>
+          </tr>
+          <tr>
+            <td>piątek</td>
+            <td><input type="checkbox" checked> Otwarte</td>
+            <td>od: <input type="time" required> do: <input type="time" required></td>
+          </tr>
+          <tr>
+            <td>sobota</td>
+            <td><input type="checkbox" checked> Otwarte</td>
+            <td>od: <input type="time" required> do: <input type="time" required></td>
+          </tr>
+          <tr>
+            <td>niedziela</td>
+            <td><input type="checkbox"> Otwarte</td>
+            <td>od: <input type="time" required> do: <input type="time" required></td>
+          </tr>
+        </table>
+      </form>
+    </div>
+    <!-- /OPEN HOURS -->
+    <hr>
+    <!-- TIME INTERVALS -->
+    <div class="column settings-address">
+        <h3>Pozostałe ustawienia:</h3>
+        <form companyDataForm="ngForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label>Interwały czasowe kalendarza:</label>
+            <select class="form-control">
+                <option>10 min.</option>
+                <option>15 min.</option>
+                <option>20 min.</option>
+                <option>30 min.</option>
+                <option>40 min.</option>
+                <option>50 min.</option>
+                <option>1 h.</option>
+                <option>2 h.</option>
+              </select>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-form btn-primary">ZAPISZ</button>
+          </div>
+        </form>
+      </div>
+      <!-- / TIME INTERVALS -->
+
+  </div>
+  <!-- /MAIN  WINDOW -->
+
+  <!-- {{ fresult | json }} -->
+
+
+</div>
