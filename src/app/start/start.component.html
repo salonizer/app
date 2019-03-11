@@ -3,7 +3,7 @@
     <div class="pane-group">
       <div class="pane-sm sidebar">
         <nav class="nav-group">
-          <h5 class="nav-group-title">Favorites</h5>
+          <h5 class="nav-group-title">Salonizer</h5>
           <a class="nav-group-item" [routerLink]="['/calendar']" routerLinkActive="active"> 
             <span class="icon icon-home"></span>
             Kalendarz
@@ -25,6 +25,29 @@
             Ustawienia
           </a>
         </nav>
+        <nav class="nav-group">
+            <h5 class="nav-group-title">Społeczność</h5>
+            <a class="nav-group-item" [routerLink]="['/calendar']" routerLinkActive="active"> 
+              <span class="icon icon-home"></span>
+              Kolejna wersja
+            </a>
+            <a class="nav-group-item" [routerLink]="['/customers']" routerLinkActive="active">
+              <span class="icon icon-users"></span>
+              Forum
+            </a>
+            <a class="nav-group-item" [routerLink]="['/services']" routerLinkActive="active">
+              <span class="icon icon-tools"></span>
+              BugTracker
+            </a>
+          </nav>
+          <nav class="nav-group">
+              <h5 class="nav-group-title">Konto</h5>
+              <a class="nav-group-item" [routerLink]="['/customers']" routerLinkActive="active">
+                <span class="icon icon-users"></span>
+                Zaloguj
+              </a>
+
+            </nav>
       </div>
       <div class="pane" style="padding:10px;"><router-outlet></router-outlet></div>
     </div>

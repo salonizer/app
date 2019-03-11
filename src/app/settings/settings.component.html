@@ -9,60 +9,53 @@
     <!-- COMPANY DATA -->
     <div class="column settings-address">
       <h3>Dane firmy:</h3>
-      <form companyDataForm="ngForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-          <label>Nazwa firmy</label>
-          <input type="text" class="form-control" name="name" [(ngModel)]="serviceForm.name">
-        </div>
-        <div class="form-actions">
-          <button type="submit" class="btn btn-form btn-primary">ZAPISZ</button>
-        </div>
-      </form>
+
     </div>
     <!-- /COMPANY DATA -->
     <hr>
     <!-- OPEN HOURS -->
     <div class="cloumn settings-open-hours">
       <h3>Godziny otwarcia:</h3>
-      <form>
+      <form [formGroup]="openHoursForm">
         <table>
-          <tr>
+          <tr formGroupName="mo">
             <td>poniedziałek</td>
-            <td><input type="checkbox" checked> Otwarte</td>
-            <td>od: <input type="time" required> do: <input type="time" required></td>
+            <td><input formControlName="isOpen" type="checkbox"> Otwarte</td>
+            <td>od: <input formControlName="openFrom" type="time"> do: <input formControlName="openTo" type="time"></td>
           </tr>
-          <tr>
+          <tr formGroupName="tu">
             <td>wtorek</td>
-            <td><input type="checkbox" checked> Otwarte</td>
-            <td>od: <input type="time" required> do: <input type="time" required></td>
+            <td><input formControlName="isOpen" type="checkbox"> Otwarte</td>
+            <td>od: <input formControlName="openFrom" type="time"> do: <input formControlName="openTo" type="time"></td>
           </tr>
-          <tr>
+         <tr formGroupName="we">
             <td>środa</td>
-            <td><input type="checkbox" checked> Otwarte</td>
-            <td>od: <input type="time" required> do: <input type="time" required></td>
+            <td><input formControlName="isOpen" type="checkbox"> Otwarte</td>
+            <td>od: <input formControlName="openFrom" type="time"> do: <input formControlName="openTo" type="time"></td>
           </tr>
-          <tr>
+          <tr formGroupName="th">
             <td>czwartek</td>
-            <td><input type="checkbox" checked> Otwarte</td>
-            <td>od: <input type="time" required> do: <input type="time" required></td>
+            <td><input formControlName="isOpen" type="checkbox"> Otwarte</td>
+            <td>od: <input formControlName="openFrom" type="time"> do: <input formControlName="openTo" type="time"></td>
           </tr>
-          <tr>
+          <tr formGroupName="fr">
             <td>piątek</td>
-            <td><input type="checkbox" checked> Otwarte</td>
-            <td>od: <input type="time" required> do: <input type="time" required></td>
+            <td><input formControlName="isOpen" type="checkbox"> Otwarte</td>
+            <td>od: <input formControlName="openFrom" type="time"> do: <input formControlName="openTo" type="time"></td>
           </tr>
-          <tr>
+          <tr formGroupName="sa">
             <td>sobota</td>
-            <td><input type="checkbox" checked> Otwarte</td>
-            <td>od: <input type="time" required> do: <input type="time" required></td>
+            <td><input formControlName="isOpen" type="checkbox"> Otwarte</td>
+            <td>od: <input formControlName="openFrom" type="time"> do: <input formControlName="openTo" type="time"></td>
           </tr>
-          <tr>
+          <tr formGroupName="su">
             <td>niedziela</td>
-            <td><input type="checkbox"> Otwarte</td>
-            <td>od: <input type="time" required> do: <input type="time" required></td>
-          </tr>
+            <td><input formControlName="isOpen" type="checkbox"> Otwarte</td>
+            <td>od: <input formControlName="openFrom" type="time"> do: <input formControlName="openTo" type="time"></td>
+          </tr> 
         </table>
       </form>
+      <hr>
     </div>
     <!-- /OPEN HOURS -->
     <hr>

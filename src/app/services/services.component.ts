@@ -1,7 +1,7 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import PouchDB from 'pouchdb';
 import PouchFind from 'pouchdb-find';
-import { PdbCore } from 'projects/ngx-pdb/pdb-wrapper/src/public_api';
+import { PdbCore } from 'projects/ngx-dnd/pdb/src/public_api';
 import { ServiceClass } from './service-class';
 PouchDB.plugin(PouchFind);
 

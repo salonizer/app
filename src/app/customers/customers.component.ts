@@ -3,7 +3,7 @@ import PouchDB from 'pouchdb';
 import PouchFind from 'pouchdb-find';
 PouchDB.plugin(PouchFind);
 import { CustomerClass } from './customer-class';
-import { PdbCore } from 'projects/ngx-pdb/pdb-wrapper/src/public_api';
+import { PdbCore } from 'projects/ngx-dnd/pdb/src/public_api';
 
 @Component({
   selector: 'app-customers',
@@ -51,7 +51,7 @@ export class CustomersComponent implements OnInit {
     } catch (err) {
       console.log(err);
     }
-  }
+  } // end: ngOnInit();
 
   async onEdit(item) {
     this.customerForm = item;

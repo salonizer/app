@@ -9,6 +9,7 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "target": "es5",
     "typeRoots": [
@@ -24,6 +25,12 @@
       ],
       "@ngx-pdb/pdb-wrapper/*": [
         "dist/ngx-pdb/pdb-wrapper/*"
+      ],
+      "@ngx-dnd/pdb": [
+        "dist/ngx-dnd/pdb"
+      ],
+      "@ngx-dnd/pdb/*": [
+        "dist/ngx-dnd/pdb/*"
       ]
     }
   }
