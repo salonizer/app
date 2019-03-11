@@ -1,5 +1,6 @@
 # CHANGELOG
 ## v0.1 - alfa
+- v0.0.6 - setting hours in settings working ok
 - v0.0.4 - test
 - v0.0.3-9-g322303b - after git clean
 - v0.0.3-8-gf054cf6 - add, edit and delete customers working
