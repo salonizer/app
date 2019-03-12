@@ -45,10 +45,12 @@ export class SettingsComponent implements OnInit {
     })
   }); // end: registrationForm;
 
+  calendarSettingsForm = new FormGroup({
+    intervals: new FormControl(''),
+    });
 
-
-openHours: any[];
-result: any;
+result: any; // open_hours_weekly variable
+calendarSettings: any; // calendar_settings variable
 
   constructor(
     private pdbinit: PdbInit,
@@ -57,7 +59,13 @@ result: any;
 
   async ngOnInit() {
     await this.load_openHours_from_db();
+    await this.load_settings_from_db();
+
     await this.openHoursForm.patchValue(this.result);
+    console.log('log przed patchvalue: ', this.calendarSettings);
+    this.calendarSettingsForm.patchValue(this.calendarSettings);
+
+    // this.calendarSettingsForm.setValue(this.calendarSettings);
 
     this.openHoursForm.valueChanges.subscribe((update) => {
       console.log(update);
@@ -65,8 +73,34 @@ result: any;
       // this.fields = JSON.parse(update.fields);
     });
 
+    this.calendarSettingsForm.valueChanges.subscribe((update) => {
+      console.log(update);
+      this.pdbfind.put_by_type_and_name('settings', 'calendar_settings', update);
+      // this.fields = JSON.parse(update.fields);
+    });
+
 
   } // end: ngOninit()
+
+
+
+  async load_settings_from_db() { // load calendar settings from DB
+    const db = this.pdbinit.db_connect();
+    this.pdbfind.create_index();
+    try {
+      const result: any = await db.find({
+        selector: { type: 'settings', name: 'calendar_settings' }
+      });
+      await delay(10);
+      console.log('calendar settings: ', result.docs[0].data);
+      // return result.docs[0].data;
+      this.calendarSettings = result.docs[0].data;
+    } catch (err) {
+      console.log(err);
+      await delay(100);
+      this.load_settings_from_db();
+    }
+  } // end: load_settings_from_db();
 
 
   async load_openHours_from_db() { // load OpenHours from DB
@@ -84,7 +118,7 @@ result: any;
       console.log(err);
       this.load_openHours_from_db();
     }
-  } // end: load_from_db();
+  } // end: load_openHours_from_db();
 
 
 }
@@ -92,4 +126,3 @@ result: any;
 function delay(ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
-
