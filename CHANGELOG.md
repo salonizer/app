@@ -1,5 +1,6 @@
 # CHANGELOG
 ## v0.1 - alfa
+- v0.0.10 - start calendar component build
 - v0.0.9 - select options in settings working ok
 - v0.0.8 - load and save calendar interval in settings working ok
 - v0.0.6 - setting hours in settings working ok
