@@ -41,14 +41,14 @@ export class AppComponent implements OnInit {
   set_default_openHours() {
     const openHours = '{"mo":{"isOpen":true,"openFrom":"10:00","openTo":"18:00"},"tu":{"isOpen":true,"openFrom":"10:00","openTo":"18:00"},"we":{"isOpen":true,"openFrom":"10:00","openTo":"18:00"},"th":{"isOpen":true,"openFrom":"10:00","openTo":"18:00"},"fr":{"isOpen":true,"openFrom":"10:00","openTo":"18:00"},"sa":{"isOpen":true,"openFrom":"10:00","openTo":"14:00"},"su":{"isOpen":false,"openFrom":"","openTo":""}}';
     const openHoursJson = JSON.parse(openHours);
-    console.log(openHoursJson);
+    // console.log(openHoursJson);
     this.pdbfind.put_by_type_and_key('settings', 'open_hours_weekly', openHoursJson);
   }
 
   set_default_calendarSettings() {
     let calendarSettings = '{"intervals": 30}';
     calendarSettings = JSON.parse(calendarSettings);
-    console.log(calendarSettings);
+    // console.log(calendarSettings);
     this.pdbfind.put_by_type_and_key('settings', 'calendar_settings', calendarSettings);
   }
 

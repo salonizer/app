@@ -64,9 +64,9 @@ calendarSettings: any; // calendar_settings variable
     this.calendarSettings = await this.pdbkeys.get_doc_data('settings', 'calendar_settings');
 
 
-    await delay(1000);
-    console.log('RESULT: ', this.result);
-    console.log('CALSETT: ', this.calendarSettings);
+    await delay(10);
+    // console.log('RESULT: ', this.result);
+    // console.log('CALSETT: ', this.calendarSettings);
 
 
     await this.openHoursForm.patchValue(this.result);
@@ -75,13 +75,13 @@ calendarSettings: any; // calendar_settings variable
     // this.calendarSettingsForm.setValue(this.calendarSettings);
 
     this.openHoursForm.valueChanges.subscribe((update) => {
-      console.log(update);
+      // console.log(update);
       this.pdbfind.put_by_type_and_key('settings', 'open_hours_weekly', update);
       // this.fields = JSON.parse(update.fields);
     });
 
     this.calendarSettingsForm.valueChanges.subscribe((update) => {
-      console.log(update);
+      // console.log(update);
       this.pdbfind.put_by_type_and_key('settings', 'calendar_settings', update);
       // this.fields = JSON.parse(update.fields);
     });
