@@ -5121,6 +5121,13 @@ ng-packagr@^4.2.0:
     uglify-js "^3.0.7"
     update-notifier "^2.3.0"
 
+ngx-indexed-db@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/ngx-indexed-db/-/ngx-indexed-db-2.0.5.tgz#961e15a6a70a6eb00cb128528b0976e8edec9c41"
+  integrity sha512-uUGp+lSELRJh+cVSiLH1ZhfoEbjbRRKxPxbdJI6enRtvSyBvhFAtblnE/tBiedOvYYVDOhuCE9ov29paSfsiUg==
+  dependencies:
+    tslib "^1.9.0"
+
 nice-try@^1.0.4:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"
