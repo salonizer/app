@@ -15,6 +15,7 @@ export class CalendarComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
+
     const wart = await this.pdbkeys.get_doc_data('settings', 'open_hours_weekly');
     console.log('Wart: ', wart);
   }
