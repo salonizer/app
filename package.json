@@ -1,6 +1,6 @@
 {
   "name": "salonizer",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "main": "electron/dist/main.js",
   "scripts": {
     "ng": "ng",
