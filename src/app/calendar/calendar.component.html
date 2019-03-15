@@ -3,7 +3,65 @@
 </p>
 
 
+
 <div class="calendar">
+  <div class="day">
+      <ul id="buttons">
+          <li *ngFor="let item of dayJson" [style.height.px]="item.lenght" [style.backgroundColor]="item.color"  (mouseover)="hover=true" (mouseleave)="hover=false">{{ item.name }} {{ item.lenght }}</li>
+        </ul>
+  </div>
+  <div class="day">
+      <ul id="buttons">
+          <li>Coffee</li>
+          <li>Tea</li>
+          <li>Milk</li>
+        </ul>
+  </div>
+  <div class="day">
+      <ul id="buttons">
+          <li>Coffee</li>
+          <li>Tea</li>
+          <li>Milk</li>
+        </ul>
+  </div>
+  <div class="day">
+      <ul id="buttons">
+          <li>Coffee</li>
+          <li>Tea</li>
+          <li>Milk</li>
+        </ul>
+  </div>
+  <div class="day">
+      <ul id="buttons">
+          <li>Coffee</li>
+          <li>Tea</li>
+          <li>Milk</li>
+        </ul>
+  </div>
+  <div class="day">
+      <ul id="buttons">
+          <li>Coffee</li>
+          <li>Tea</li>
+          <li>Milk</li>
+        </ul>
+  </div>
+  <div class="day">
+      <ul id="buttons">
+          <li>Coffee</li>
+          <li>Tea</li>
+          <li>Milk</li>
+        </ul>
+  </div>
+</div>
+
+
+<hr>
+JSON: {{ dayJson | json}}
+<hr>
+
+
+
+<!-- <div class="calendar">
   <div class="day">
       <ul id="buttons">
           <li [style.height.px]="150" style="background-color:yellowgreen;" >Coffee</li>
@@ -53,10 +111,4 @@
           <li>Milk</li>
         </ul>
   </div>
-
-
-
-
-
-  
-</div>
+</div> -->

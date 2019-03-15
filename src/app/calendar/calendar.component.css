@@ -36,6 +36,6 @@
       }
 
 #buttons li:hover {
-        background-color: #33669996;
+        background-color: #33669996 !important;
         color: white;
       }
