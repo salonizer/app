@@ -19,8 +19,8 @@ export function fake_array(): any {
   fakeArray.push(array);
   array = {
     name: 'itemek 2',
-    start: 900,
-    lenght: 130
+    start: 920,
+    lenght: 150
   };
   fakeArray.push(array);
   return fakeArray;
