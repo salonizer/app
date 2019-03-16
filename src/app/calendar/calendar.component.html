@@ -1,13 +1,38 @@
-<p>
-  calendar works!
-</p>
-
+  <!-- ADD SERVICE MODAL -->
+  <div id="addEventModal" class="add-event-modal-window" >
+    <form  [formGroup]="addEventForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label>Nazwa</label>
+        <input formControlName="name" type="text" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Start</label>
+        <input formControlName="start" type="number" class="form-control">
+      </div>
+      <div class="form-group">
+          <label>Sługiość</label>
+          <input formControlName="length" type="number" class="form-control">
+      </div>
+      <input formControlName="date" type="hidden">
+      <div class="form-actions">
+        <button type="button" class="btn btn-form btn-default" (click)="onCencel()">Cancel</button>
+        <button type="submit" class="btn btn-form btn-primary">OK</button>
+      </div>
+    </form>
+  </div>
+  <!-- /ADD SERVICE MODAL -->
 
 
 <div class="calendar">
   <div class="day">
       <ul id="buttons">
-          <li *ngFor="let item of dayJson" [style.height.px]="item.lenght" [style.backgroundColor]="item.color"  (mouseover)="hover=true" (mouseleave)="hover=false">{{ item.name }} {{ item.lenght }}</li>
+        <span *ngFor="let item of dayJson">
+            <li *ngIf="item.type === 'empty'" [style.height.px]="item.length" [style.backgroundColor]="item.color" (click)="onEmptyEventClick()">{{ item.name }} {{ item.length }}</li>
+            <li *ngIf="item.type === 'empty_before'" [style.height.px]="item.length" [style.backgroundColor]="item.color">{{ item.name }} {{ item.length }}</li>
+            <li *ngIf="item.type === 'empty_after'" [style.height.px]="item.length" [style.backgroundColor]="item.color">{{ item.name }} {{ item.length }}</li>
+            <li *ngIf="item.type === 'event'" [style.height.px]="item.length" [style.backgroundColor]="item.color">{{ item.name }} {{ item.length }}</li>
+            <!-- <li [style.height.px]="item.length" [style.backgroundColor]="item.color"  (mouseover)="hover=true" (mouseleave)="hover=false">{{ item.name }} {{ item.length }}</li> -->
+        </span>
         </ul>
   </div>
   <div class="day">

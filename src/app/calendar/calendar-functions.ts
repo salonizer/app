@@ -1,3 +1,7 @@
+import { Component, OnInit } from '@angular/core';
+
+
+
 export function delay(ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -14,23 +18,23 @@ export function fake_array(): any {
   let array = {
     name: 'itemek 1',
     start: 700,
-    lenght: 40
+    length: 40
   };
   fakeArray.push(array);
   array = {
     name: 'itemek 2',
     start: 920,
-    lenght: 150
+    length: 150
   };
   fakeArray.push(array);
   return fakeArray;
 } // end function fake_array();
 
 
-export async function json_day(day: any, intervalTime: number) {
-  const workStart: number = await convert_hour_to_minutes(day.openFrom);
-  let cursor: number = await convert_hour_to_minutes(day.openFrom);
-  const workStop: number = await convert_hour_to_minutes(day.openTo);
+export async function json_day(openHours: any, dayEvents: any[], intervalTime: number) {
+  const workStart: number = await convert_hour_to_minutes(openHours.openFrom);
+  let cursor: number = await convert_hour_to_minutes(openHours.openFrom);
+  const workStop: number = await convert_hour_to_minutes(openHours.openTo);
   const workTime: number = workStop - workStart;
   const intervalsNumber: number = workTime / intervalTime;
   let fakeArray = new Array();
@@ -44,9 +48,8 @@ export async function json_day(day: any, intervalTime: number) {
 
   const dayArray = new Array();
   let event: any;
-  event = fakeArray.shift();
+  event = dayEvents.shift();
   // console.log('EVENT START: ', event.start);
-
   for (cursor; cursor < workStop; ) {
     console.log('CURSOR VALUE: ', cursor);
     await delay(200);
@@ -57,8 +60,9 @@ export async function json_day(day: any, intervalTime: number) {
       array = {
         name: '',
         start: cursor,
-        lenght: difference,
-        color: 'brown'
+        length: difference,
+        color: 'brown',
+        type: 'empty_before'
       };
       cursor = cursor + difference;
     } else if ( typeof event !== 'undefined' && event.start <= cursor) {
@@ -66,11 +70,12 @@ export async function json_day(day: any, intervalTime: number) {
       array = {
         name: event.start,
         start: event.start,
-        lenght: event.lenght,
-        color: 'blue'
+        length: event.length,
+        color: 'blue',
+        type: 'event'
       };
-      cursor = event.start + event.lenght;
-      event = fakeArray.shift();
+      cursor = event.start + event.length;
+      event = dayEvents.shift();
     } else if ( cursor % intervalTime !== 0 ) {
       const modulo = cursor % intervalTime;
       const difference = intervalTime - modulo;
@@ -78,8 +83,9 @@ export async function json_day(day: any, intervalTime: number) {
       array = {
         name: '',
         start: cursor,
-        lenght: difference,
-        color: 'teal'
+        length: difference,
+        color: 'teal',
+        type: 'empty_after'
       };
       cursor = cursor + difference;
     } else {
@@ -87,14 +93,14 @@ export async function json_day(day: any, intervalTime: number) {
       array = {
         name: 'empty_' + cursor,
         start: cursor,
-        lenght: 30,
-        color: 'grey'
+        length: 30,
+        color: 'grey',
+        type: 'empty'
       };
       cursor = cursor + intervalTime;
     }
     dayArray.push(array);
   }
-
   return dayArray;
 }// end function json_day();
 
