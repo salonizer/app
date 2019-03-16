@@ -36,12 +36,12 @@ export class CalendarComponent implements OnInit {
       const openHoursWeekly: any = await this.pdbkeys.get_doc_data('settings', 'open_hours_weekly');
       const calendarSettings: any = await this.pdbkeys.get_doc_data('settings', 'calendar_settings');
       const intervalTime: number = calendarSettings.intervals;
-      const day: any = openHoursWeekly.mo;
+      const openHours: any = openHoursWeekly.mo;
       this.dayEvents = await this.pdbdate.get_docs_data_by_date('calendar_events', '2019-03-15');
       this.dayEvents.sort((a, b) => a.start - b.start);
       await delay(0);
       await console_log('dayEvents :', this.dayEvents);
-      this.dayJson = await json_day(day, this.dayEvents, intervalTime);
+      this.dayJson = await json_day(openHours, this.dayEvents, intervalTime);
 
     }
   } // end function ngOnInit();
