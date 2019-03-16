@@ -1,5 +1,6 @@
 # CHANGELOG
 ## v0.1 - alfa
+- v0.0.14 - events from database working good in calendar
 - v0.0.13 - showing calendar events working good
 - v0.0.12 - after add ngx-indexed-db
 - v0.0.10 - start calendar component build
