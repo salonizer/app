@@ -39,7 +39,7 @@ export class AppComponent implements OnInit {
   }
 
   set_default_openHours() {
-    const openHours = '{"mo":{"isOpen":true,"openFrom":"10:00","openTo":"18:00"},"tu":{"isOpen":true,"openFrom":"10:00","openTo":"18:00"},"we":{"isOpen":true,"openFrom":"10:00","openTo":"18:00"},"th":{"isOpen":true,"openFrom":"10:00","openTo":"18:00"},"fr":{"isOpen":true,"openFrom":"10:00","openTo":"18:00"},"sa":{"isOpen":true,"openFrom":"10:00","openTo":"14:00"},"su":{"isOpen":false,"openFrom":"","openTo":""}}';
+    const openHours = '{"1":{"isOpen":true,"openFrom":"10:00","openTo":"18:00"},"2":{"isOpen":true,"openFrom":"10:00","openTo":"18:00"},"3":{"isOpen":true,"openFrom":"10:00","openTo":"18:00"},"4":{"isOpen":true,"openFrom":"10:00","openTo":"18:00"},"5":{"isOpen":true,"openFrom":"10:00","openTo":"18:00"},"6":{"isOpen":true,"openFrom":"10:00","openTo":"14:00"},"0":{"isOpen":false,"openFrom":"","openTo":""}}';
     const openHoursJson = JSON.parse(openHours);
     // console.log(openHoursJson);
     this.pdbfind.put_by_type_and_key('settings', 'open_hours_weekly', openHoursJson);

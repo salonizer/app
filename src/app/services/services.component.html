@@ -8,11 +8,11 @@
       </div>
       <div class="form-group">
         <label>Czas (min.)</label>
-        <input type="text" class="form-control" name="time" [(ngModel)]="serviceForm.time">
+        <input type="number" class="form-control" name="time" [(ngModel)]="serviceForm.time">
       </div>
       <div class="form-group">
           <label>Cena</label>
-          <input type="text" class="form-control" name="price" [(ngModel)]="serviceForm.price">
+          <input type="number" class="form-control" name="price" [(ngModel)]="serviceForm.price">
         </div>
       <div class="form-actions">
         <button type="button" class="btn btn-form btn-default" (click)="onCencel()">Cancel</button>

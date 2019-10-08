@@ -95,7 +95,7 @@ export class CustomersComponent implements OnInit {
   }
 
   async onDelete(item: any) {
-    if (confirm('Czy jesteś pewien, ze chcesz usunąć klienta: ' + item.firstName + ' ' + item.lastName + '?')) {
+    if (confirm('Czy jesteś pewien, ze chcesz usunąć klienta: ' + item.name + '?')) {
       this.db.remove_by_id(item.id);
       await this.refresh();
       this.closeModal();

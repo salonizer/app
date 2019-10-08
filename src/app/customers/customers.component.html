@@ -3,12 +3,8 @@
     <div id="addCustomerModal" class="customer-add-modal-window" >
       <form customerForm="ngForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
-          <label>Imie</label>
-          <input type="text" class="form-control" name="firstName" [(ngModel)]="customerForm.firstName">
-        </div>
-        <div class="form-group">
-          <label>Nazwisko</label>
-          <input type="text" class="form-control" name="lastName" [(ngModel)]="customerForm.lastName">
+          <label>Imie i nazwisko</label>
+          <input type="text" class="form-control" name="name" [(ngModel)]="customerForm.name">
         </div>
         <div class="form-group">
             <label>Email</label>
@@ -43,7 +39,7 @@
             </thead>
             <tbody>
               <tr *ngFor="let item of fresult">
-                <td (click)="onEdit(item)">{{ item.firstName }} {{ item.lastName }}</td>
+                <td (click)="onEdit(item)">{{ item.name }}</td>
                 <td (click)="onEdit(item)">{{ item.email }}</td>
                 <td (click)="onEdit(item)">{{ item.phone }}</td>
                 <td><span class="icon icon-cancel" (click)="onDelete(item)"></span></td>

@@ -1,11 +1,59 @@
 import { Component, OnInit } from '@angular/core';
 
 
+const event_status: any = {
+  empty: {
+    color: 'rgba(250, 250, 250, 1)'
+  },
+  event: {
+    color: 'rgba(30,144,255,0.3)'
+  },
+  pre_event: {
+    color: 'rgba(250, 250, 250, 1)',
+  },
+  past_event: {
+    color: 'rgba(250, 250, 250, 1)',
+  },
+  after_workstop: {
+    color: 'rgb(255,165,0)',
+  },
+  time_out: {
+    color: 'rgba(255,165,0,0.3)',
+  },
+  before_workStart: {
+    color: 'rgba(150,150,150,0.5)',
+  },
+  day_name: {
+    color: 'orange',
+  }
+
+};
+
+export default event_status;
+
 
 export function delay(ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+export function dateToString(date: Date): string {
+  // date = new Date(date);
+  var day = minTwoDigitsNumber(date.getDate());
+  var monthIndex: string = minTwoDigitsNumber((date.getMonth() + 1));
+  var year = date.getFullYear();
+  const newString: string = year + '-' + monthIndex + '-' + day;
+  // const newString = new Date(date);
+  return newString;
+}
+
+export function minTwoDigitsNumber(variable: number): string {
+  return (variable < 10 ? '0' : '') + variable;
+}
+
+export function addDays(date: Date, days: number): Date {
+  date.setDate(date.getDate() + days);
+  return date;
+}
 
 export function convert_hour_to_minutes(data: string): number {
   const variable: any[] = data.split(':');
@@ -13,94 +61,172 @@ export function convert_hour_to_minutes(data: string): number {
   return result;
 } // end function convert_hour_to_minutes();
 
-export function fake_array(): any {
-  const fakeArray = new Array();
-  let array = {
-    name: 'itemek 1',
-    start: 700,
-    length: 40
-  };
-  fakeArray.push(array);
-  array = {
-    name: 'itemek 2',
-    start: 920,
-    length: 150
-  };
-  fakeArray.push(array);
-  return fakeArray;
-} // end function fake_array();
+
+export function next_event(event, workStop): number {
+  if (typeof event !== 'undefined') {
+    const nextevent = event.start;
+    // console.log('NEXT EVENT: ', nextevent);
+    return nextevent;
+  }
+  else {
+    const nextevent = workStop;
+    // console.log('NEXT EVENT: ', nextevent);
+    return nextevent;
+  }
+}
+
+export async function minutes_to_hour(min: number) {
+  const hours = Math.floor( min / 60 );
+  // let minutes: number = min % 60;
+  const minutes = await minTwoDigitsNumber(min % 60);
+  return hours + ':' + minutes;
+}
+
+export function getDayByDate(date: any): number{
+  const day = new Date(date).getDay();
+  return day;
+}
+
+export function weekday_name(_i: number): string{
+  var d = new Date();
+  var weekday = new Array(7);
+  weekday[0] = "Sunday";
+  weekday[1] = "Monday";
+  weekday[2] = "Tuesday";
+  weekday[3] = "Wednesday";
+  weekday[4] = "Thursday";
+  weekday[5] = "Friday";
+  weekday[6] = "Saturday";
+
+  return weekday[_i];
+}
 
 
-export async function json_day(openHours: any, dayEvents: any[], intervalTime: number) {
-  const workStart: number = await convert_hour_to_minutes(openHours.openFrom);
-  let cursor: number = await convert_hour_to_minutes(openHours.openFrom);
-  const workStop: number = await convert_hour_to_minutes(openHours.openTo);
+export async function json_day(openHours: any, daydate: string, dayEvents: any[], intervalTime, calendarStartTime: number, calendarStopTime: number) {
+  // console.log('Godziny otwarcia: ', openHours[1].openFrom);
+  let day_no = getDayByDate(daydate);
+
+  const workStart: number = await convert_hour_to_minutes(openHours[day_no].openFrom);
+  // let cursor: number = await convert_hour_to_minutes(openHours[day_no].openFrom);
+  let cursor: number = calendarStartTime - 60;
+  
+  const workStop: number = await convert_hour_to_minutes(openHours[day_no].openTo);
   const workTime: number = workStop - workStart;
-  const intervalsNumber: number = workTime / intervalTime;
-  let fakeArray = new Array();
-  fakeArray = await fake_array();
-  await delay(200);
-  console.log('FAKE ARRAY: ', fakeArray);
-  // console.log('work_start: ', workStart);
-  // console.log('work_stop: ', workStop);
-  // console.log('work_time: ', workTime);
-  // console.log('interval_number: ', intervalsNumber);
-
+  const dayStop: number = calendarStopTime + 60;
+  await delay(0);
+ 
   const dayArray = new Array();
+  const day_name = weekday_name(day_no);
+  let array: any;
+  array = {
+    name: day_name,
+    start: cursor,
+    length: 30,
+    color: event_status.day_name.color,
+    type: 'day_name',
+    date: daydate
+  };
+  dayArray.push(array);
+
+
   let event: any;
   event = dayEvents.shift();
-  // console.log('EVENT START: ', event.start);
-  for (cursor; cursor < workStop; ) {
-    console.log('CURSOR VALUE: ', cursor);
-    await delay(200);
+ 
+  for (cursor; cursor < dayStop;) {
+    // console.log('CURSOR VALUE: ', cursor);
+    await delay(0);
     let array: any;
-    if ( typeof event !== 'undefined' && cursor + intervalTime > event.start && event.start - cursor > 0) {
+    const nextevent = await next_event(event, workStop);
+    const time: string = await minutes_to_hour(cursor);
+    const isOpen: boolean = openHours[day_no].isOpen;
+
+    if ( typeof event !== 'undefined' && cursor + intervalTime > event.start && event.start - cursor > 0 && cursor < workStop && isOpen === true ) {
       const difference = event.start - cursor;
-      console.log( 'DIFFERENCE BEFORE EVENT: ', difference);
+      // console.log( 'DIFFERENCE BEFORE EVENT: ', difference);
       array = {
         name: '',
         start: cursor,
         length: difference,
-        color: 'brown',
-        type: 'empty_before'
+        nextevent: nextevent,
+        color: event_status.pre_event.color,
+        type: 'pre_event',
+        date: daydate,
+        time: time
       };
       cursor = cursor + difference;
-    } else if ( typeof event !== 'undefined' && event.start <= cursor) {
-      console.log('CALENDAR EVENT: ', cursor);
+    } else if ( typeof event !== 'undefined' && event.start <= cursor && isOpen === true ) {
+      console.log('CALENDAR EVENT: ', event);
+      const date = event.date;
+      let color: string = event_status.event.color
+      if ( event.status === 'time_out' ) {
+        color = event_status.time_out.color
+      };
       array = {
-        name: event.start,
+        name: event.id,
         start: event.start,
         length: event.length,
-        color: 'blue',
-        type: 'event'
+        color: color,
+        type: 'event',
+        date: daydate,
+        time: time
       };
       cursor = event.start + event.length;
       event = dayEvents.shift();
-    } else if ( cursor % intervalTime !== 0 ) {
-      const modulo = cursor % intervalTime;
-      const difference = intervalTime - modulo;
-      console.log( 'DIFFERENCE PAST EVENT: ', difference);
+    } else if ( cursor % intervalTime !== 0 && cursor < workStop && isOpen === true ) {
+      let difference: number;
+      if ( cursor + intervalTime < nextevent ) {
+        const modulo = cursor % intervalTime;
+        difference = intervalTime - modulo;
+      } else {
+        difference = nextevent - cursor;
+      }
+
+      // console.log( 'DIFFERENCE PAST EVENT: ', difference);
       array = {
         name: '',
         start: cursor,
         length: difference,
-        color: 'teal',
-        type: 'empty_after'
+        nextevent: nextevent,
+        color: event_status.past_event.color,
+        type: 'past_event',
+        date: daydate,
+        time: time
       };
       cursor = cursor + difference;
     } else {
-      console.log('EMPTY EVENT: ', cursor);
+      // console.log('W EMPTY CURSOR STATUS: ', cursor);
+      // console.log('EMPTY EVENT: ', cursor);
+      const cursor_value = cursor;
+      let color: string;
+      let type: string;
+      if (cursor < workStart || cursor >= workStop || isOpen === false) {
+        color = event_status.before_workStart.color;
+        type = 'time_out';
+      } else {
+        color = event_status.empty.color;
+        type = 'empty';
+      }
+      if (cursor + length > next_event(event, workStop) && workStop - cursor > 0 ) {
+        length = workStop - cursor;
+        cursor = cursor + intervalTime;
+      } else {
+        length = intervalTime;
+        cursor = cursor + intervalTime;
+      }
       array = {
         name: 'empty_' + cursor,
-        start: cursor,
-        length: 30,
-        color: 'grey',
-        type: 'empty'
+        start: cursor_value,
+        length: length,
+        nextevent: nextevent,
+        color: color,
+        type: type,
+        date: daydate,
+        time: time
       };
-      cursor = cursor + intervalTime;
     }
     dayArray.push(array);
   }
+  console.log('loading...');
   return dayArray;
 }// end function json_day();
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PdbCore, PdbFind, PdbInit } from 'projects/ngx-dnd/pdb/src/public_api';
+import { PdbCore, PdbFind, PdbInit, PdbKeys } from 'projects/ngx-dnd/pdb/src/public_api';
 import { FormGroup, FormControl } from '@angular/forms';
-import { PdbKeys } from 'projects/ngx-dnd/pdb/src/lib/pdb-keys.service';
+
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
@@ -9,37 +9,37 @@ import { PdbKeys } from 'projects/ngx-dnd/pdb/src/lib/pdb-keys.service';
 })
 export class SettingsComponent implements OnInit {
   openHoursForm = new FormGroup({
-    mo: new FormGroup({
+    1: new FormGroup({
       isOpen: new FormControl(true),
       openFrom: new FormControl(''),
       openTo: new FormControl('')
     }),
-    tu: new FormGroup({
+    2: new FormGroup({
       isOpen: new FormControl(true),
       openFrom: new FormControl(''),
       openTo: new FormControl('')
     }),
-    we: new FormGroup({
+    3: new FormGroup({
       isOpen: new FormControl(true),
       openFrom: new FormControl(''),
       openTo: new FormControl('')
     }),
-    th: new FormGroup({
+    4: new FormGroup({
       isOpen: new FormControl(true),
       openFrom: new FormControl(''),
       openTo: new FormControl('')
     }),
-    fr: new FormGroup({
+    5: new FormGroup({
       isOpen: new FormControl(true),
       openFrom: new FormControl(''),
       openTo: new FormControl('')
     }),
-    sa: new FormGroup({
+    6: new FormGroup({
       isOpen: new FormControl(true),
       openFrom: new FormControl(''),
       openTo: new FormControl('')
     }),
-    su: new FormGroup({
+    0: new FormGroup({
       isOpen: new FormControl(true),
       openFrom: new FormControl(''),
       openTo: new FormControl('')
@@ -74,10 +74,9 @@ calendarSettings: any; // calendar_settings variable
 
     // this.calendarSettingsForm.setValue(this.calendarSettings);
 
-    this.openHoursForm.valueChanges.subscribe((update) => {
+    this.openHoursForm.valueChanges.subscribe(async (update) => {
       // console.log(update);
       this.pdbfind.put_by_type_and_key('settings', 'open_hours_weekly', update);
-      // this.fields = JSON.parse(update.fields);
     });
 
     this.calendarSettingsForm.valueChanges.subscribe((update) => {

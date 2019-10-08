@@ -1,97 +1,71 @@
-  <!-- ADD SERVICE MODAL -->
-  <div id="addEventModal" class="add-event-modal-window" >
-    <form  [formGroup]="addEventForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label>Nazwa</label>
-        <input formControlName="name" type="text" class="form-control">
-      </div>
-      <div class="form-group">
-        <label>Start</label>
-        <input formControlName="start" type="number" class="form-control">
-      </div>
-      <div class="form-group">
-          <label>Sługiość</label>
-          <input formControlName="length" type="number" class="form-control">
-      </div>
-      <input formControlName="date" type="hidden">
-      <div class="form-actions">
-        <button type="button" class="btn btn-form btn-default" (click)="onCencel()">Cancel</button>
-        <button type="submit" class="btn btn-form btn-primary">OK</button>
-      </div>
-    </form>
-  </div>
-  <!-- /ADD SERVICE MODAL -->
+<!-- ADD SERVICE MODAL -->
+<div id="addEventModal" class="add-event-modal-window">
+  <form [formGroup]="addEventForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Wybierz Klienta:</label>
+      <ng-select formControlName="customer" [items]="clientList" bindLabel="data.name" placeholder="Select client">
+      </ng-select>
+    </div>
+    <div class="form-group">
+      <label>Select multiple elements</label>
+      <ng-select formControlName="service" [items]="servicesList" [multiple]="true" [closeOnSelect]="true"
+        [searchable]="false" bindLabel="name" placeholder="Select zabiegi">
+      </ng-select>
+    </div>
+    <div class="form-group">
+      <label>Start</label>
+      <input formControlName="start" type="number" class="form-control" disabled>
+    </div>
+    <input formControlName="date" type="hidden">
+    <div class="form-actions">
+      <button type="button" class="btn btn-form btn-default" (click)="onCencel()">Cancel</button>
+      <button type="submit" class="btn btn-form btn-primary">OK</button>
+    </div>
+  </form>
+</div>
+<!-- /ADD SERVICE MODAL -->
 
 
 <div class="calendar">
-  <div class="day">
-      <ul id="buttons">
-        <span *ngFor="let item of dayJson">
-            <li *ngIf="item.type === 'empty'" [style.height.px]="item.length" [style.backgroundColor]="item.color" (click)="onEmptyEventClick()">{{ item.name }} {{ item.length }}</li>
-            <li *ngIf="item.type === 'empty_before'" [style.height.px]="item.length" [style.backgroundColor]="item.color">{{ item.name }} {{ item.length }}</li>
-            <li *ngIf="item.type === 'empty_after'" [style.height.px]="item.length" [style.backgroundColor]="item.color">{{ item.name }} {{ item.length }}</li>
-            <li *ngIf="item.type === 'event'" [style.height.px]="item.length" [style.backgroundColor]="item.color">{{ item.name }} {{ item.length }}</li>
-            <!-- <li [style.height.px]="item.length" [style.backgroundColor]="item.color"  (mouseover)="hover=true" (mouseleave)="hover=false">{{ item.name }} {{ item.length }}</li> -->
-        </span>
-        </ul>
+  <div class="day" *ngFor="let group of calendarData">
+    <ul id="buttons">
+      <span *ngFor="let item of group" id="{{item.date}}">
+        <li *ngIf="item.type === 'empty'" [style.height.px]="item.length" [style.backgroundColor]="item.color"
+          (click)="onEmptyEventClick(item)"><span *ngIf="item.length >= 30">{{ item.time }}</span></li>
+        <li *ngIf="item.type === 'time_out'" [style.height.px]="item.length" [style.backgroundColor]="item.color"
+          ><span *ngIf="item.length >= 30">{{ item.time }}</span></li>
+        <li *ngIf="item.type === 'pre_event'" [style.height.px]="item.length" [style.backgroundColor]="item.color"
+          (click)="onEmptyEventClick(item)">
+          <span *ngIf="item.length >= 30">{{ item.time }}</span></li>
+        <li *ngIf="item.type === 'past_event'" [style.height.px]="item.length" [style.backgroundColor]="item.color"
+          (click)="onEmptyEventClick(item)">
+          <span *ngIf="item.length >= 30">{{ item.time }}</span></li>
+        <li *ngIf="item.type === 'event'" [style.height.px]="item.length" [style.backgroundColor]="item.color">
+          <span *ngIf="item.length >= 30">{{ item.time }} {{ item.name }}</span></li>
+        <li *ngIf="item.type === 'after_workstop'" [style.height.px]="item.length" [style.backgroundColor]="item.color">
+          {{ item.time }}</li>
+        <li class="day_name" *ngIf="item.type === 'day_name'" [style.height.px]="item.length" [style.backgroundColor]="item.color"
+          (click)="onEmptyEventClick(item)"><span *ngIf="item.length >= 30"><strong>{{ item.name }} ({{ item.date }})</strong></span></li>
+        <!-- <li [style.height.px]="item.length" [style.backgroundColor]="item.color"  (mouseover)="hover=true" (mouseleave)="hover=false">{{ item.name }} {{ item.length }}</li> -->
+      </span>
+    </ul>
   </div>
 </div>
 
-
-<hr>
-JSON: {{ dayJson | json}}
 <hr>
 
+<p>
+  Selected city: {{addEventForm.value | json}}
+</p>
+<hr />
 
 
-<!-- <div class="calendar">
-  <div class="day">
-      <ul id="buttons">
-          <li [style.height.px]="150" style="background-color:yellowgreen;" >Coffee</li>
-          <li>Tea</li>
-          <li>Milk</li>
-        </ul>
-  </div>
-  <div class="day">
-      <ul id="buttons">
-          <li>Coffee</li>
-          <li>Tea</li>
-          <li>Milk</li>
-        </ul>
-  </div>
-  <div class="day">
-      <ul id="buttons">
-          <li>Coffee</li>
-          <li>Tea</li>
-          <li>Milk</li>
-        </ul>
-  </div>
-  <div class="day">
-      <ul id="buttons">
-          <li>Coffee</li>
-          <li>Tea</li>
-          <li>Milk</li>
-        </ul>
-  </div>
-  <div class="day">
-      <ul id="buttons">
-          <li>Coffee</li>
-          <li>Tea</li>
-          <li>Milk</li>
-        </ul>
-  </div>
-  <div class="day">
-      <ul id="buttons">
-          <li>Coffee</li>
-          <li>Tea</li>
-          <li>Milk</li>
-        </ul>
-  </div>
-  <div class="day">
-      <ul id="buttons">
-          <li>Coffee</li>
-          <li>Tea</li>
-          <li>Milk</li>
-        </ul>
-  </div>
-</div> -->
+<label>Select multiple elements</label>
+
+
+
+
+
+<hr>
+<!-- JSON: {{ calendarData | json}} -->
+<hr>

@@ -1,6 +1,6 @@
 {
   "name": "salonizer",
-  "version": "0.0.15",
+  "version": "0.0.17",
   "main": "electron/dist/main.js",
   "scripts": {
     "ng": "ng",
@@ -21,6 +21,7 @@
     "@angular/platform-browser": "~7.2.0",
     "@angular/platform-browser-dynamic": "~7.2.0",
     "@angular/router": "~7.2.0",
+    "@ng-select/ng-select": "^2.16.2",
     "@ngx-dnd/pdb-wrapper": "^0.0.16",
     "core-js": "^2.5.4",
     "ngx-indexed-db": "^2.0.5",

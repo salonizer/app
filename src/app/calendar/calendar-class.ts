@@ -1,8 +1,10 @@
 export class AddEventClass {
         constructor(
+                public selectedClient?: string,
                 public name?: string,
-                public start?: string,
-                public length?: string,
+                public start?: number,
+                public color?: string,
+                public nextevent?: number,
                 public date?: string
         ) {}
 }

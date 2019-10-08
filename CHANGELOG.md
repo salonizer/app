@@ -1,5 +1,9 @@
 # CHANGELOG
 ## v0.1 - alfa
+- v0.0.17 - reaktywacja projektu 10.2019
+- v0.0.16-3-gea5d195 - reaktywacja projektu 10.2019
+- v0.0.16-2-g23738fd - reaktywacja projektu 10.2019
+- v0.0.16 - calendar component almost work
 - v0.0.15 - synchronization
 - v0.0.14 - events from database working good in calendar
 - v0.0.13 - showing calendar events working good
