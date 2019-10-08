@@ -1,5 +1,6 @@
 # CHANGELOG
 ## v0.1 - alfa
+- v0.0.18 - reaktywacja projektu 10.17
 - v0.0.17 - reaktywacja projektu 10.2019
 - v0.0.16-3-gea5d195 - reaktywacja projektu 10.2019
 - v0.0.16-2-g23738fd - reaktywacja projektu 10.2019
