@@ -232,7 +232,7 @@ export async function json_day(openHours: any, daydate: string, dayEvents: any[]
     }
     dayArray.push(array);
   }
-  console.log('loading...');
+  // console.log('loading...');
   return dayArray;
 }// end function json_day();
 
