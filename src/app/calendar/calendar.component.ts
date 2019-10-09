@@ -16,6 +16,7 @@ export let openHours: any;
 export let intervalTime: number;
 export let calendarStartTime: number;
 export let calendarStopTime: number;
+export let clientList: any;
 
 
 @Component({
@@ -162,7 +163,7 @@ export class CalendarComponent implements OnInit {
       // return;
       await dayEvents.sort((a, b) => a.start - b.start);
       await delay(0);
-      jsonDay = await json_day(openHours, dayDate, dayEvents, intervalTime, calendarStartTime, calendarStopTime);
+      jsonDay = await json_day(openHours, dayDate, dayEvents, intervalTime, calendarStartTime, calendarStopTime, this.clientList);
       jsonDays.push(jsonDay);
       // console.log('DayCounter: ', i);
       dayDate = await dateToString(addDays(startDate, 1));

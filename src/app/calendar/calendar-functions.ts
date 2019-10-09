@@ -102,9 +102,11 @@ export function weekday_name(_i: number): string{
 }
 
 
-export async function json_day(openHours: any, daydate: string, dayEvents: any[], intervalTime, calendarStartTime: number, calendarStopTime: number) {
+export async function json_day(openHours: any, daydate: string, dayEvents: any[], intervalTime, calendarStartTime: number, calendarStopTime: number, clientList: any[]) {
   // console.log('Godziny otwarcia: ', openHours[1].openFrom);
   let day_no = getDayByDate(daydate);
+
+  // console.log(clientList); // tabela customers
 
   const workStart: number = await convert_hour_to_minutes(openHours[day_no].openFrom);
   // let cursor: number = await convert_hour_to_minutes(openHours[day_no].openFrom);
@@ -161,8 +163,12 @@ export async function json_day(openHours: any, daydate: string, dayEvents: any[]
       if ( event.status === 'time_out' ) {
         color = event_status.time_out.color
       };
+
+      let clientName = clientList.find(x=>x._id == event.clientId).data.name; // wyszukiwanie imienia i nazwiska klienta z tabeli customers
+      // console.log(clientName);
+
       array = {
-        name: event.id,
+        name: clientName,
         start: event.start,
         length: event.length,
         color: color,

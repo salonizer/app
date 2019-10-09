@@ -59,6 +59,12 @@ export class CustomersComponent implements OnInit {
     this.openModal();
   }
 
+  async onClick(item) {
+    this.customerForm = item;
+    await delay(10);
+    this.openCustomerHistoryModal();
+  }
+
   async refresh() {
     this.fresult = new Array();
     await delay(10);
@@ -72,6 +78,10 @@ export class CustomersComponent implements OnInit {
 
   async openModal() {
     document.getElementById('addCustomerModal').classList.add('showModal');
+  }
+
+  async openCustomerHistoryModal() {
+    document.getElementById('showCustomerHistoryModal').classList.add('showModal');
   }
 
   async onSubmit() {
@@ -92,6 +102,7 @@ export class CustomersComponent implements OnInit {
 
   closeModal() {
     document.getElementById('addCustomerModal').classList.remove('showModal');
+    document.getElementById('showCustomerHistoryModal').classList.remove('showModal');
   }
 
   async onDelete(item: any) {

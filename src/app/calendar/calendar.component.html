@@ -41,7 +41,7 @@
           (click)="onEmptyEventClick(item)">
           <span *ngIf="item.length >= 30">{{ item.time }}</span></li>
         <li *ngIf="item.type === 'event'" [style.height.px]="item.length" [style.backgroundColor]="item.color">
-          <span *ngIf="item.length >= 30">{{ item.time }} {{ item.name }}</span></li>
+          <span *ngIf="item.length >= 30">{{ item.time }} cześć {{ item.name }}</span></li>
         <li *ngIf="item.type === 'after_workstop'" [style.height.px]="item.length" [style.backgroundColor]="item.color">
           {{ item.time }}</li>
         <li class="day_name" *ngIf="item.type === 'day_name'" [style.height.px]="item.length" [style.backgroundColor]="item.color"
@@ -68,4 +68,5 @@
 
 <hr>
 <!-- JSON: {{ calendarData | json}} -->
+{{ calendarData | json}}
 <hr>
