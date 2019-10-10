@@ -41,7 +41,7 @@
           (click)="onEmptyEventClick(item)">
           <span *ngIf="item.length >= 30">{{ item.time }}</span></li>
         <li *ngIf="item.type === 'event'" [style.height.px]="item.length" [style.backgroundColor]="item.color">
-          <span *ngIf="item.length >= 30">{{ item.time }} {{ item.name }} <br>
+          <span *ngIf="item.length >= 30"><u><strong>{{ item.time }} {{ item.name }}</strong></u> <br>
             <span *ngFor="let service of item.service" id="{{item.service}}">
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-right-open"></span> {{ service.name }}<br>
             </span>
