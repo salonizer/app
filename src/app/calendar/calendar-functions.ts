@@ -171,6 +171,7 @@ export async function json_day(openHours: any, daydate: string, dayEvents: any[]
         name: clientName,
         start: event.start,
         length: event.length,
+        service: event.service,
         color: color,
         type: 'event',
         date: daydate,
