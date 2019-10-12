@@ -50,9 +50,13 @@ export class CalendarComponent implements OnInit {
 
   async ngOnInit() {
     {
+      let showWeek = Number(sessionStorage.getItem('showWeek'));
+      let startDate = new Date();
+      startDate = new Date(startDate.getTime() + (1000 * 60 * 60 * 24 * 7 * showWeek));
+      startDate = getMonday(startDate); 
 
-      const startDate = new Date();
 
+      console.log ('STARTDATE: ', startDate);
       openHours = await this.pdbkeys.get_doc_data('settings', 'open_hours_weekly');
       const calendarSettings: any = await this.pdbkeys.get_doc_data('settings', 'calendar_settings');
       intervalTime = calendarSettings.intervals;
@@ -67,7 +71,7 @@ export class CalendarComponent implements OnInit {
       await console.log('SERVICES LIST DATA: ', this.servicesList);
 
 
-      const numberDaysDisplayed: number = 14;
+      const numberDaysDisplayed: number = 7;
       // const openHours: any = openHoursWeekly.mo;
 
       // this.calendarData = await json_day(openHours, this.dayEvents, intervalTime);
@@ -79,6 +83,25 @@ export class CalendarComponent implements OnInit {
 
     }
   } // end function ngOnInit();
+
+  async thisWeek() {
+    sessionStorage.setItem('showWeek', '0');
+    await delay(0);
+    this.ngOnInit();
+  }
+
+  async nextWeek() {
+    sessionStorage.setItem('showWeek', String(Number(sessionStorage.getItem('showWeek')) + 1));
+    await delay(0);
+    this.ngOnInit();
+  }
+
+  async previousWeek() {
+    sessionStorage.setItem('showWeek', String(Number(sessionStorage.getItem('showWeek')) - 1));
+    await delay(0);
+    this.ngOnInit();
+  }
+
 
 
   async openModal() {
@@ -211,3 +234,13 @@ function openHours_get_max(openHours: any): number {
   // console.log('openHours_get_max RETURN: ', max);
   return max;
 }
+
+function getMonday(d) {
+  d = new Date(d);
+  var day = d.getDay(),
+      diff = d.getDate() - day + (day == 0 ? -6:1); // adjust when day is sunday
+  return new Date(d.setDate(diff));
+}
+
+
+

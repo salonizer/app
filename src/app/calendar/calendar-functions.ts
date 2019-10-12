@@ -90,13 +90,13 @@ export function getDayByDate(date: any): number{
 export function weekday_name(_i: number): string{
   var d = new Date();
   var weekday = new Array(7);
-  weekday[0] = "Sunday";
-  weekday[1] = "Monday";
-  weekday[2] = "Tuesday";
-  weekday[3] = "Wednesday";
-  weekday[4] = "Thursday";
-  weekday[5] = "Friday";
-  weekday[6] = "Saturday";
+  weekday[0] = "Niedziela";
+  weekday[1] = "Poniedziałek";
+  weekday[2] = "Wtorek";
+  weekday[3] = "Środa";
+  weekday[4] = "Czwartek";
+  weekday[5] = "Piątek";
+  weekday[6] = "Sobota";
 
   return weekday[_i];
 }
