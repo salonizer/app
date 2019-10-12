@@ -1,5 +1,6 @@
 # CHANGELOG
 ## v0.1 - alfa
+- v0.0.23 - dziala ten, kolejny, poprzedni tydzien, dni tyg po polsku
 - v0.0.22 - poprawiony wygląd poprzedniego patcha
 - v0.0.21 - dziala pokazywanie listy zabiegow w kalendarzu
 - v0.0.20 - przyspieszenie dzialania wyrzucenie niepotrzebnych logow
